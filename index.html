@@ -119,7 +119,7 @@ footer a { color: var(--muted); }
 
 <script>
 // Sign-ups go to a Google Sheet owned by Paz (Apps Script web app). Empty until the script is deployed.
-const ENDPOINT = "";
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbw9kHNPQkgeSCR5kzKF79HP97L-DcVeuhpuPIKqNaI_6xC2aAIRIvOCLOGeSKbolVSSnQ/exec";
 (() => {
   const f = document.getElementById("wl"), msg = document.getElementById("wl-msg"), btn = document.getElementById("wl-btn");
   const src = (new URLSearchParams(location.search).get("src") || "direct").slice(0, 40).replace(/[^\w-]/g, "");
