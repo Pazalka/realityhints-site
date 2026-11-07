@@ -60,6 +60,27 @@ button[disabled] { opacity: 0.6; cursor: default; }
 .grid div { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 4px; font-size: 15px; color: #d8d3c9; }
 .grid b { font-family: var(--mono); font-weight: 400; color: var(--gold); font-size: 13px; padding-top: 2px; }
 .grid small { color: var(--gold); font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; margin-left: 6px; }
+/* evidence scale: a rail that goes from solid (proven) to dotted (frontier) */
+.scale { display: grid; gap: 0; position: relative; margin-top: 6px; }
+.season { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 24px; padding: 18px 0 18px 26px; position: relative; border-left: 3px solid var(--gold); }
+.season::before { content: ""; position: absolute; left: -9px; top: 24px; width: 15px; height: 15px; border-radius: 50%; background: var(--bg); border: 3px solid var(--gold); }
+.s1 { border-left-style: solid; } .s1::before { background: var(--gold); }
+.s2 { border-left-style: solid; border-left-color: rgba(233,196,106,.8); }
+.s3 { border-left-style: dashed; border-left-color: rgba(233,196,106,.7); }
+.s4 { border-left-style: dashed; border-left-color: rgba(233,196,106,.55); }
+.s5 { border-left-style: dotted; border-left-color: rgba(233,196,106,.45); }
+.s6 { border-left-style: dotted; border-left-color: rgba(69,196,214,.6); } .s6::before { border-color: #45C4D6; }
+.lvl { display: grid; gap: 2px; align-content: start; padding-top: 2px; }
+.lvl b { font-family: var(--mono); font-weight: 400; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.lvl span { font-family: var(--head); font-size: 20px; color: var(--gold); }
+.s6 .lvl span { color: #45C4D6; }
+.body h3 { font-family: var(--head); font-weight: 500; font-size: 22px; margin: 0; }
+.body .what { margin: 4px 0 10px; color: var(--muted); font-size: 15px; max-width: 70ch; }
+.body ol { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 28px; font-size: 15px; color: #d8d3c9; }
+.body ol li::before { content: "› "; color: var(--gold); }
+.body i { font-style: normal; color: var(--dim); font-size: 13px; margin-left: 4px; }
+.body small { color: var(--gold); font-family: var(--mono); font-size: 11px; letter-spacing: .08em; margin-left: 6px; }
+@media (max-width: 820px) { .season { grid-template-columns: minmax(0, 1fr); gap: 6px; } .body ol { grid-template-columns: minmax(0, 1fr); } }
 .how { max-width: 1120px; margin: 0 auto; padding-block: 8px 44px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; border-top: 1px solid var(--line); padding-top: 32px; }
 .how h3 { font-family: var(--head); font-weight: 500; font-size: 19px; margin: 0 0 6px; }
 .how p { margin: 0; color: var(--muted); font-size: 15px; }
@@ -77,8 +98,9 @@ footer a { color: var(--muted); }
   <div class="in">
     <div>
       <div class="brand">Reality Hints · Goldie Alk</div>
-      <h1>What is actually happening <em>when nobody is looking?</em></h1>
-      <p class="sub">A course of cinematic investigations into quantum physics and consciousness. Real experiments, real names, real dates. Where the evidence stops, we say so.</p>
+      <h1>Scientists are talking differently <em>about consciousness.</em></h1>
+      <p class="sub">I've spent hundreds of hours on physicists' talks and papers, and organized them into one path, step by step: from the proven strangeness of mainstream physics to newer claims that aren't mainstream yet, some pointing toward consciousness and non-duality. Each step is labelled: established, suggested, or still open.</p>
+      <p class="sub" style="margin-top:12px;color:var(--gold)">Careful enough to send to your skeptical friend.</p>
       <a class="free" href="https://www.youtube.com/channel/UC2cvedIcBn0U7fIOYkYvdGw" target="_blank" rel="noopener">Watch Investigation 01 free on YouTube →</a>
     </div>
     <form id="wl" novalidate>
@@ -94,25 +116,31 @@ footer a { color: var(--muted); }
   </div>
 </header>
 
-<section class="list pad" aria-label="Inside the course">
-  <div class="t">Inside the course</div>
-  <div class="grid">
-    <div><b>01</b><span>Why did physics stop trusting common sense?<small>FREE</small></span></div>
-    <div><b>02</b><span>What happens before you look?</span></div>
-    <div><b>03</b><span>What is quantum entanglement?</span></div>
-    <div><b>04</b><span>Why Einstein was wrong</span></div>
-    <div><b>05</b><span>Can the future affect the past?</span></div>
-    <div><b>06</b><span>Does evolution hide reality?</span></div>
-    <div><b>07</b><span>What is actually being observed?</span></div>
-    <div><b>08</b><span>Did Wheeler see the deeper pattern?</span></div>
-    <div><b>…</b><span>and the investigations that follow, season by season</span></div>
+<section class="list pad" aria-label="The course, from proven to frontier">
+  <div class="t">The path · six seasons, from proven physics to the open frontier</div>
+  <div class="scale">
+    <div class="season s1"><div class="lvl"><b>Season 1</b><span>Established</span></div><div class="body"><h3>Common Sense Breaks</h3><p class="what">Lab-confirmed, Nobel-level physics. Reality doesn't behave the way intuition expects.</p>
+      <ol><li>Why did physics stop trusting common sense? <small>FREE</small></li><li>What happens before you look?</li><li>What is quantum entanglement?</li><li>Why Einstein was wrong</li><li>Can the future affect the past?</li></ol></div></div>
+    <div class="season s2"><div class="lvl"><b>Season 2</b><span>Serious theory</span></div><div class="body"><h3>The Map Is Not the Territory</h3><p class="what">Peer-reviewed, still debated. Perception may be a survival interface, not a window on truth.</p>
+      <ol><li>Does evolution hide reality?</li><li>What is actually being observed?</li></ol></div></div>
+    <div class="season s3"><div class="lvl"><b>Season 3</b><span>Open hypotheses</span></div><div class="body"><h3>Information Takes Center Stage</h3><p class="what">Proposals from leading physicists. Matter may not be the deepest layer.</p>
+      <ol><li>Did Wheeler see the deeper pattern?</li><li>Are space and time emergent?</li><li>Can information have physical weight?</li><li>Is reality a simulation?</li><li>Is the whole hidden in every part?</li><li>Is reality a virtual reality run by consciousness?</li></ol></div></div>
+    <div class="season s4"><div class="lvl"><b>Season 4</b><span>Contested</span></div><div class="body"><h3>Mind Re-enters the Conversation</h3><p class="what">Real experiments, disputed results. Consciousness becomes a question science can't ignore.</p>
+      <ol><li>Why is consciousness still unexplained?</li><li>Is the brain the whole story?</li><li>Can attention affect physical systems?</li><li>Can two minds share a hidden link?</li><li>Can a machine ever actually think?</li><li>Does mainstream science already have an answer?</li><li>What's the least crazy explanation?</li></ol></div></div>
+    <div class="season s5"><div class="lvl"><b>Season 5</b><span>Frontier</span></div><div class="body"><h3>Does Anything Survive?</h3><p class="what">Clinical case studies, heavily debated. Evidence that resists "awareness just ends".</p>
+      <ol><li>What do 150 cases have in common?</li><li>What happens during cardiac arrest?</li><li>What happens when the brain goes dark?</li><li>Can the living reach the dead?</li></ol></div></div>
+    <div class="season s6"><div class="lvl"><b>Season 6</b><span>Convergence</span></div><div class="body"><h3>Convergence Without Overreach</h3><p class="what">Patterns worth noticing, not proof. Where physics and non-duality start to rhyme, and where they don't.</p>
+      <ol><li>Why did great physicists look East?</li><li>Can the body respond to belief?</li><li>Is the body a resonant system?</li><li>Another researcher asking Wheeler's question</li><li>What should we believe?</li></ol></div></div>
   </div>
 </section>
 
 <section class="how pad" aria-label="How the investigations work">
-  <div><h3>The real experiments</h3><p>Young in 1801, Einstein in 1905, Tonomura's single electrons in 1989. Each claim is tied to a person, a date and a number.</p></div>
-  <div><h3>Both sides, honestly</h3><p>Mainstream physics first. The open questions next, labelled as open. "Suggests", never "proves".</p></div>
-  <div><h3>Made to be watched</h3><p>Each investigation is a 7 to 9 minute film, narrated by Goldie Alk, an electro-optics engineer.</p></div>
+  <div><h3>Careful enough for a skeptic</h3><p>Mainstream physics first. Every claim tied to a person, a date and a number: Young in 1801, Einstein in 1905, Tonomura's single electrons in 1989. "Suggests", never "proves".</p></div>
+  <div><h3>Where it may be heading</h3><p>From the double slit to today's papers on consciousness and non-duality: what they show, what they don't, and what is still open.</p></div>
+  <div><h3>From an engineer</h3><p>Each investigation is a 7 to 9 minute film, narrated by Goldie Alk, an electro-optics engineer.</p></div>
+</section>
+<section class="list pad" aria-label="Share">
+  <div style="display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center"><span class="t">Know a skeptic?</span><button type="button" id="share" style="padding:9px 16px;font-size:15px">Copy the link for them</button><span id="share-msg" class="t" style="color:var(--gold)" role="status" aria-live="polite"></span></div>
 </section>
 
 <footer class="pad"><div class="fi"><span>© 2026 Goldie Alk · Reality Hints</span><span><a href="privacy.html">Privacy</a> · <a href="https://www.youtube.com/channel/UC2cvedIcBn0U7fIOYkYvdGw" target="_blank" rel="noopener">YouTube</a> · <a href="https://x.com/aifuturebuilder" target="_blank" rel="noopener">X @aifuturebuilder</a></span></div></footer>
@@ -120,6 +148,13 @@ footer a { color: var(--muted); }
 <script>
 // Sign-ups go to a Google Sheet owned by Paz (Apps Script web app). Empty until the script is deployed.
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbw9kHNPQkgeSCR5kzKF79HP97L-DcVeuhpuPIKqNaI_6xC2aAIRIvOCLOGeSKbolVSSnQ/exec";
+(() => {
+  const sb = document.getElementById("share"), sm = document.getElementById("share-msg"), link = "https://realityhints.com/?src=share";
+  sb.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(link); sm.textContent = "Link copied. Send it to them."; }
+    catch (e) { sm.textContent = link; }
+  });
+})();
 (() => {
   const f = document.getElementById("wl"), msg = document.getElementById("wl-msg"), btn = document.getElementById("wl-btn");
   const src = (new URLSearchParams(location.search).get("src") || "direct").slice(0, 40).replace(/[^\w-]/g, "");
